@@ -4,96 +4,160 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ฟอร์มบันทึกการตรวจความสะอาด</title>
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+  <!-- ดึงฟอนต์ Sarabun และ Prompt ให้ดูสวยนุ่มนวล -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
-      font-family: 'Sarabun', sans-serif;
+      font-family: 'Prompt', 'Sarabun', sans-serif;
     }
+    
     body {
-      background-color: #ffffff;
+      background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+      min-height: 100vh;
       margin: 0;
-      padding: 40px 20px;
+      padding: 30px 15px;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
-    .container {
+
+    .card {
+      background: #ffffff;
       width: 100%;
-      max-width: 500px;
+      max-width: 480px;
+      padding: 35px 28px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e2e8f0;
     }
-    h2 {
-      font-size: 24px;
-      font-weight: 700;
+
+    .header-title {
+      text-align: center;
       margin-top: 0;
-      margin-bottom: 24px;
-      color: #000000;
+      margin-bottom: 25px;
+      color: #0f172a;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      position: relative;
     }
+
+    .header-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 4px;
+      background: #22c55e;
+      margin: 8px auto 0 auto;
+      border-radius: 10px;
+    }
+
     .form-group {
       margin-bottom: 18px;
     }
+
     label {
       display: block;
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #000000;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #334155;
     }
+
     input[type="text"],
-    select,
-    .file-input-wrapper {
-      width: 100%;
-      height: 42px;
-      padding: 8px 12px;
-      font-size: 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      outline: none;
-      background-color: #ffffff;
-    }
-    input[type="text"]:focus,
-    select:focus {
-      border-color: #4b5563;
-    }
-    input::placeholder {
-      color: #9ca3af;
-    }
-    /* ช่องเลือกไฟล์รูปภาพ */
-    input[type="file"] {
-      width: 100%;
-      height: 42px;
-      padding: 5px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      background-color: #ffffff;
-      font-size: 14px;
-    }
-    /* ปุ่มส่งข้อมูลสีเขียว */
-    .btn-submit {
+    select {
       width: 100%;
       height: 46px;
-      background-color: #4cd154;
+      padding: 10px 14px;
+      font-size: 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      outline: none;
+      background-color: #f8fafc;
+      color: #1e293b;
+      transition: all 0.2s ease-in-out;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      border-color: #22c55e;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+    }
+
+    input::placeholder {
+      color: #94a3b8;
+    }
+
+    /* ช่องไฟล์รูปภาพแบบการ์ดน่ารัก */
+    .file-input-custom {
+      position: relative;
+      width: 100%;
+      height: 48px;
+      border: 1.5px dashed #94a3b8;
+      border-radius: 10px;
+      background-color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+    }
+
+    .file-input-custom:hover {
+      border-color: #22c55e;
+      background-color: #f0fdf4;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+      font-size: 13px;
+      color: #475569;
+      cursor: pointer;
+    }
+
+    /* ปุ่มส่งข้อมูลสีเขียวสดใส */
+    .btn-submit {
+      width: 100%;
+      height: 50px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
       color: #ffffff;
       border: none;
-      border-radius: 6px;
+      border-radius: 12px;
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 600;
       cursor: pointer;
-      margin-top: 10px;
-      transition: background-color 0.2s;
+      margin-top: 12px;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+      transition: all 0.2s ease-in-out;
     }
+
     .btn-submit:hover {
-      background-color: #43bd4a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
     }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
     .btn-submit:disabled {
-      background-color: #9ca3af;
+      background: #cbd5e1;
+      box-shadow: none;
       cursor: not-allowed;
+      transform: none;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h2>ฟอร์มบันทึกการตรวจความสะอาด</h2>
+  <div class="card">
+    <h2 class="header-title">ฟอร์มบันทึกการตรวจความสะอาด</h2>
 
     <form id="inspectionForm">
       <!-- 1. ชื่อผู้ส่ง -->
@@ -128,10 +192,12 @@
         <input type="text" id="checker" placeholder="ระบุชื่อผู้ตรวจ" required>
       </div>
 
-      <!-- 5. แนบรูปภาพ -->
+      <!-- 5. ถ่ายภาพ / แนบรูปภาพ -->
       <div class="form-group">
         <label for="imageFile">ถ่ายภาพ / แนบรูปภาพ:</label>
-        <input type="file" id="imageFile" accept="image/*" required>
+        <div class="file-input-custom">
+          <input type="file" id="imageFile" accept="image/*" required>
+        </div>
       </div>
 
       <!-- ปุ่มส่งข้อมูล -->
@@ -140,10 +206,9 @@
   </div>
 
   <script>
-    // 📍 เอา Web App URL ล่าสุดจาก Apps Script (ที่เลือก Everyone) มาวางตรงนี้
+    // 📍 เปลี่ยน URL ตรงนี้เป็น Web App URL ล่าสุดจาก Apps Script (ที่เลือก Everyone)
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxY4vdnTjB9hHFvrc28Rry6NfvLBJex22pR-Ir7psRSZFHhT-22PuSkMMH4YHQVf_4F/exec";
 
-    // ฟังก์ชันแปลงรูปภาพเป็น Base64
     function getBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -153,7 +218,6 @@
       });
     }
 
-    // ฟังก์ชันส่งข้อมูลเข้า Google Sheets
     async function sendData() {
       const btn = document.getElementById("submitBtn");
       const sender = document.getElementById("sender").value.trim();
@@ -168,13 +232,11 @@
       }
 
       btn.disabled = true;
-      btn.innerText = "กำลังส่งข้อมูล...";
+      btn.innerText = "⏳ กำลังส่งข้อมูล...";
 
       try {
-        // แปลงไฟล์รูปภาพ
         const imageBase64 = await getBase64(fileInput.files[0]);
 
-        // จัดเตรียมชุดข้อมูล
         const payload = {
           action: "submit_inspection",
           sender: sender,
@@ -185,17 +247,14 @@
           image: imageBase64
         };
 
-        // ส่งผ่าน API
         await fetch(SCRIPT_URL, {
           method: "POST",
-          mode: "no-cors", // ป้องกันปัญหาสิทธิ์ข้ามอุปกรณ์
-          headers: {
-            "Content-Type": "application/json"
-          },
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
         });
 
-        alert("บันทึกข้อมูลเรียบร้อยแล้ว!");
+        alert("🎉 บันทึกข้อมูลเรียบร้อยแล้ว!");
         document.getElementById("inspectionForm").reset();
 
       } catch (error) {
