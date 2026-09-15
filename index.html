@@ -3,65 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ระบบตรวจความสะอาด</title>
+  <title>ฟอร์มบันทึกการตรวจความสะอาด</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Sarabun', sans-serif; padding: 20px; max-width: 500px; margin: auto; }
-    .form-group { margin-bottom: 15px; }
-    label { display: block; margin-bottom: 5px; font-weight: bold; }
-    input, select, button { width: 100%; padding: 10px; box-sizing: border-box; border-radius: 5px; border: 1px solid #ccc; }
-    button { background-color: #4CAF50; color: white; border: none; font-size: 16px; cursor: pointer; margin-top: 10px; }
-    button:disabled { background-color: #cccccc; }
+    * {
+      box-sizing: border-box;
+      font-family: 'Sarabun', sans-serif;
+    }
+    body {
+      background-color: #ffffff;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 500px;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 24px;
+      color: #000000;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    label {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #000000;
+    }
+    input[type="text"],
+    select,
+    .file-input-wrapper {
+      width: 100%;
+      height: 42px;
+      padding: 8px 12px;
+      font-size: 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      outline: none;
+      background-color: #ffffff;
+    }
+    input[type="text"]:focus,
+    select:focus {
+      border-color: #4b5563;
+    }
+    input::placeholder {
+      color: #9ca3af;
+    }
+    /* ช่องเลือกไฟล์รูปภาพ */
+    input[type="file"] {
+      width: 100%;
+      height: 42px;
+      padding: 5px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background-color: #ffffff;
+      font-size: 14px;
+    }
+    /* ปุ่มส่งข้อมูลสีเขียว */
+    .btn-submit {
+      width: 100%;
+      height: 46px;
+      background-color: #4cd154;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.2s;
+    }
+    .btn-submit:hover {
+      background-color: #43bd4a;
+    }
+    .btn-submit:disabled {
+      background-color: #9ca3af;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
 
-  <h2>ฟอร์มบันทึกการตรวจความสะอาด</h2>
+  <div class="container">
+    <h2>ฟอร์มบันทึกการตรวจความสะอาด</h2>
 
-  <form id="inspectionForm">
-    <!-- 1. ชื่อผู้ส่ง -->
-    <div class="form-group">
-      <label for="sender">ชื่อผู้ส่ง (Sender):</label>
-      <input type="text" id="sender" placeholder="ระบุชื่อผู้ส่ง" required>
-    </div>
+    <form id="inspectionForm">
+      <!-- 1. ชื่อผู้ส่ง -->
+      <div class="form-group">
+        <label for="sender">ชื่อผู้ส่ง (Sender):</label>
+        <input type="text" id="sender" placeholder="ระบุชื่อผู้ส่ง" required>
+      </div>
 
-    <!-- 2. สถานที่ / บริเวณ -->
-    <div class="form-group">
-      <label for="area">สถานที่/บริเวณ (Area):</label>
-      <input type="text" id="area" placeholder="เช่น อาคาร 1, สนามฟุตบอล" required>
-    </div>
+      <!-- 2. สถานที่ / บริเวณ -->
+      <div class="form-group">
+        <label for="area">สถานที่/บริเวณ (Area):</label>
+        <input type="text" id="area" placeholder="เช่น อาคาร 1, สนามฟุตบอล" required>
+      </div>
 
-    <!-- 3. ระดับชั้น (ม.) -->
-    <div class="form-group">
-      <label for="classVal">ระดับชั้น (Class):</label>
-      <select id="classVal" required>
-        <option value="">-- เลือกระดับชั้น --</option>
-        <option value="ม.1">ม.1</option>
-        <option value="ม.2">ม.2</option>
-        <option value="ม.3">ม.3</option>
-        <option value="ม.4">ม.4</option>
-        <option value="ม.5">ม.5</option>
-        <option value="ม.6">ม.6</option>
-      </select>
-    </div>
+      <!-- 3. ระดับชั้น -->
+      <div class="form-group">
+        <label for="classVal">ระดับชั้น (Class):</label>
+        <select id="classVal" required>
+          <option value="">-- เลือกระดับชั้น --</option>
+          <option value="ม.1">ม.1</option>
+          <option value="ม.2">ม.2</option>
+          <option value="ม.3">ม.3</option>
+          <option value="ม.4">ม.4</option>
+          <option value="ม.5">ม.5</option>
+          <option value="ม.6">ม.6</option>
+        </select>
+      </div>
 
-    <!-- 4. ชื่อผู้ตรวจ -->
-    <div class="form-group">
-      <label for="checker">ผู้ตรวจ (Checker):</label>
-      <input type="text" id="checker" placeholder="ระบุชื่อผู้ตรวจ" required>
-    </div>
+      <!-- 4. ผู้ตรวจ -->
+      <div class="form-group">
+        <label for="checker">ผู้ตรวจ (Checker):</label>
+        <input type="text" id="checker" placeholder="ระบุชื่อผู้ตรวจ" required>
+      </div>
 
-    <!-- 5. แนบรูปภาพ -->
-    <div class="form-group">
-      <label for="imageFile">ถ่ายภาพ / แนบรูปภาพ:</label>
-      <input type="file" id="imageFile" accept="image/*" required>
-    </div>
+      <!-- 5. แนบรูปภาพ -->
+      <div class="form-group">
+        <label for="imageFile">ถ่ายภาพ / แนบรูปภาพ:</label>
+        <input type="file" id="imageFile" accept="image/*" required>
+      </div>
 
-    <button type="button" id="submitBtn" onclick="sendData()">ส่งข้อมูลตรวจความสะอาด</button>
-  </form>
+      <!-- ปุ่มส่งข้อมูล -->
+      <button type="button" class="btn-submit" id="submitBtn" onclick="sendData()">ส่งข้อมูลตรวจความสะอาด</button>
+    </form>
+  </div>
 
   <script>
-    // 📍 1. วาง Web App URL ที่ได้จากการ Deploy สิทธิ์ "Everyone" ตรงนี้
-    const SCRIPT_URL = "https://script.google.com/macros/s/XXXXX/exec";
+    // 📍 เอา Web App URL ล่าสุดจาก Apps Script (ที่เลือก Everyone) มาวางตรงนี้
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxY4vdnTjB9hHFvrc28Rry6NfvLBJex22pR-Ir7psRSZFHhT-22PuSkMMH4YHQVf_4F/exec";
 
     // ฟังก์ชันแปลงรูปภาพเป็น Base64
     function getBase64(file) {
@@ -73,17 +153,17 @@
       });
     }
 
-    // ฟังก์ชันส่งข้อมูลไปยัง Google Apps Script
+    // ฟังก์ชันส่งข้อมูลเข้า Google Sheets
     async function sendData() {
       const btn = document.getElementById("submitBtn");
-      const sender = document.getElementById("sender").value;
-      const area = document.getElementById("area").value;
+      const sender = document.getElementById("sender").value.trim();
+      const area = document.getElementById("area").value.trim();
       const classVal = document.getElementById("classVal").value;
-      const checker = document.getElementById("checker").value;
+      const checker = document.getElementById("checker").value.trim();
       const fileInput = document.getElementById("imageFile");
 
       if (!sender || !area || !classVal || !checker || fileInput.files.length === 0) {
-        alert("กรุณากรอกข้อมูลให้ครบทุกช่อง และแนบรูปภาพครับ");
+        alert("กรุณากรอกข้อมูลให้ครบทุกช่อง และแนบรูปภาพด้วยครับ");
         return;
       }
 
@@ -91,10 +171,10 @@
       btn.innerText = "กำลังส่งข้อมูล...";
 
       try {
-        // แปลงไฟล์รูปภาพเป็น Base64
+        // แปลงไฟล์รูปภาพ
         const imageBase64 = await getBase64(fileInput.files[0]);
 
-        // จัดก้อนข้อมูลที่จะส่ง
+        // จัดเตรียมชุดข้อมูล
         const payload = {
           action: "submit_inspection",
           sender: sender,
@@ -105,21 +185,21 @@
           image: imageBase64
         };
 
-        // ส่งข้อมูลไปยัง Google Sheets
+        // ส่งผ่าน API
         await fetch(SCRIPT_URL, {
           method: "POST",
-          mode: "no-cors", // ⭐ ใส่เพื่อไม่ให้ติดปัญหาสิทธิ์เมื่อส่งจากอุปกรณ์อื่น
+          mode: "no-cors", // ป้องกันปัญหาสิทธิ์ข้ามอุปกรณ์
           headers: {
             "Content-Type": "application/json"
           },
           body: JSON.stringify(payload)
         });
 
-        alert("บันทึกข้อมูลสำเร็จเรียบร้อยแล้ว!");
+        alert("บันทึกข้อมูลเรียบร้อยแล้ว!");
         document.getElementById("inspectionForm").reset();
 
       } catch (error) {
-        alert("เกิดข้อผิดพลาดในการส่งข้อมูล: " + error);
+        alert("เกิดข้อผิดพลาด: " + error);
       } finally {
         btn.disabled = false;
         btn.innerText = "ส่งข้อมูลตรวจความสะอาด";
