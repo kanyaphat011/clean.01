@@ -4,172 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ฟอร์มบันทึกการตรวจความสะอาด</title>
-  <!-- ดึงฟอนต์ Kanit สดใสน่ารัก -->
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Kanit', sans-serif;
-    }
-    
-    /* พื้นหลังสดใสสดชื่น */
-    body {
-      background: linear-gradient(135deg, #a8edd9 0%, #fed6e3 100%);
-      min-height: 100vh;
-      margin: 0;
-      padding: 30px 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* การ์ดสีขาวมุมมน พร้อมเงาสีพาสเทล */
-    .card {
-      background: #ffffff;
-      width: 100%;
-      max-width: 480px;
-      padding: 35px 28px;
-      border-radius: 24px;
-      box-shadow: 0 15px 35px rgba(255, 105, 135, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
-      border: 3px solid #ffffff;
-    }
-
-    /* กล่องหัวข้อสีสันสดใส */
-    .header-box {
-      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-      padding: 16px;
-      border-radius: 16px;
-      text-align: center;
-      margin-bottom: 25px;
-      box-shadow: 0 6px 15px rgba(56, 249, 215, 0.4);
-    }
-
-    .header-title {
-      margin: 0;
-      color: #0f5132;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #2d3748;
-    }
-
-    /* ช่องกรอกข้อมูลสีสันนุ่มนวล */
-    input[type="text"],
-    select {
-      width: 100%;
-      height: 48px;
-      padding: 10px 16px;
-      font-size: 15px;
-      border: 2px solid #e2e8f0;
-      border-radius: 12px;
-      outline: none;
-      background-color: #f7fafc;
-      color: #2d3748;
-      transition: all 0.3s ease;
-    }
-
-    input[type="text"]:focus,
-    select:focus {
-      border-color: #48bb78;
-      background-color: #ffffff;
-      box-shadow: 0 0 0 4px rgba(72, 187, 120, 0.2);
-    }
-
-    input::placeholder {
-      color: #a0aec0;
-    }
-
-    /* ช่องเลือกไฟล์รูปภาพ */
-    .file-box {
-      background-color: #fff5f5;
-      border: 2px dashed #feb2b2;
-      border-radius: 12px;
-      padding: 8px 12px;
-      transition: all 0.3s ease;
-    }
-
-    .file-box:hover {
-      background-color: #fff0f0;
-      border-color: #fc8181;
-    }
-
-    input[type="file"] {
-      width: 100%;
-      font-size: 14px;
-      color: #4a5568;
-      cursor: pointer;
-    }
-
-    /* ปุ่มส่งข้อมูลสีเขียวสดใสไล่เฉด */
-    .btn-submit {
-      width: 100%;
-      height: 52px;
-      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-      color: #ffffff;
-      border: none;
-      border-radius: 14px;
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 10px;
-      box-shadow: 0 8px 20px rgba(56, 239, 125, 0.4);
-      transition: all 0.3s ease;
-    }
-
-    .btn-submit:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(56, 239, 125, 0.5);
-    }
-
-    .btn-submit:active {
-      transform: translateY(-1px);
-    }
-
-    .btn-submit:disabled {
-      background: #cbd5e0;
-      box-shadow: none;
-      cursor: not-allowed;
-      transform: none;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background: linear-gradient(135deg, #a8edd9 0%, #fed6e3 100%); min-height: 100vh; margin: 0; padding: 25px 15px; font-family: 'Kanit', sans-serif; display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
 
-  <div class="card">
-    <!-- หัวข้อพร้อมแถบสีสดใส -->
-    <div class="header-box">
-      <h2 class="header-title">✨ ฟอร์มบันทึกการตรวจความสะอาด 🧹</h2>
+  <div style="background: #ffffff; width: 100%; max-width: 480px; padding: 30px 24px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 2px solid #ffffff; box-sizing: border-box;">
+    
+    <!-- แถบหัวข้อสีเขียวมิ้นต์ -->
+    <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); padding: 15px; border-radius: 14px; text-align: center; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(56,249,215,0.3);">
+      <h2 style="margin: 0; color: #0f5132; font-size: 20px; font-weight: 700;">✨ ฟอร์มบันทึกการตรวจความสะอาด 🧹</h2>
     </div>
 
     <form id="inspectionForm">
       <!-- 1. ชื่อผู้ส่ง -->
-      <div class="form-group">
-        <label for="sender">👤 ชื่อผู้ส่ง (Sender):</label>
-        <input type="text" id="sender" placeholder="ระบุชื่อผู้ส่ง" required>
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #2d3748;">👤 ชื่อผู้ส่ง (Sender):</label>
+        <input type="text" id="sender" placeholder="ระบุชื่อผู้ส่ง" required style="width: 100%; height: 46px; padding: 10px 14px; font-size: 14px; border: 2px solid #cbd5e1; border-radius: 10px; outline: none; background-color: #f8fafc; box-sizing: border-box;">
       </div>
 
       <!-- 2. สถานที่ / บริเวณ -->
-      <div class="form-group">
-        <label for="area">📍 สถานที่/บริเวณ (Area):</label>
-        <input type="text" id="area" placeholder="เช่น อาคาร 1, สนามฟุตบอล" required>
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #2d3748;">📍 สถานที่/บริเวณ (Area):</label>
+        <input type="text" id="area" placeholder="เช่น อาคาร 1, สนามฟุตบอล" required style="width: 100%; height: 46px; padding: 10px 14px; font-size: 14px; border: 2px solid #cbd5e1; border-radius: 10px; outline: none; background-color: #f8fafc; box-sizing: border-box;">
       </div>
 
       <!-- 3. ระดับชั้น -->
-      <div class="form-group">
-        <label for="classVal">🏫 ระดับชั้น (Class):</label>
-        <select id="classVal" required>
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #2d3748;">🏫 ระดับชั้น (Class):</label>
+        <select id="classVal" required style="width: 100%; height: 46px; padding: 10px 14px; font-size: 14px; border: 2px solid #cbd5e1; border-radius: 10px; outline: none; background-color: #f8fafc; box-sizing: border-box;">
           <option value="">-- เลือกระดับชั้น --</option>
           <option value="ม.1">ม.1</option>
           <option value="ม.2">ม.2</option>
@@ -181,26 +43,26 @@
       </div>
 
       <!-- 4. ผู้ตรวจ -->
-      <div class="form-group">
-        <label for="checker">🔍 ผู้ตรวจ (Checker):</label>
-        <input type="text" id="checker" placeholder="ระบุชื่อผู้ตรวจ" required>
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #2d3748;">🔍 ผู้ตรวจ (Checker):</label>
+        <input type="text" id="checker" placeholder="ระบุชื่อผู้ตรวจ" required style="width: 100%; height: 46px; padding: 10px 14px; font-size: 14px; border: 2px solid #cbd5e1; border-radius: 10px; outline: none; background-color: #f8fafc; box-sizing: border-box;">
       </div>
 
       <!-- 5. ถ่ายภาพ / แนบรูปภาพ -->
-      <div class="form-group">
-        <label for="imageFile">📸 ถ่ายภาพ / แนบรูปภาพ:</label>
-        <div class="file-box">
-          <input type="file" id="imageFile" accept="image/*" required>
+      <div style="margin-bottom: 22px;">
+        <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #2d3748;">📸 ถ่ายภาพ / แนบรูปภาพ:</label>
+        <div style="background-color: #fff5f5; border: 2px dashed #feb2b2; border-radius: 10px; padding: 6px 10px;">
+          <input type="file" id="imageFile" accept="image/*" required style="width: 100%; font-size: 13px; color: #4a5568;">
         </div>
       </div>
 
       <!-- ปุ่มส่งข้อมูล -->
-      <button type="button" class="btn-submit" id="submitBtn" onclick="sendData()">🚀 ส่งข้อมูลตรวจความสะอาด</button>
+      <button type="button" id="submitBtn" onclick="sendData()" style="width: 100%; height: 50px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: #ffffff; border: none; border-radius: 12px; font-size: 17px; font-weight: 700; cursor: pointer; box-shadow: 0 6px 15px rgba(56, 239, 125, 0.4); font-family: 'Kanit', sans-serif;">🚀 ส่งข้อมูลตรวจความสะอาด</button>
     </form>
   </div>
 
   <script>
-    // 📍 เปลี่ยน URL ตรงนี้เป็น Web App URL ล่าสุดจาก Apps Script (ที่เลือก Everyone)
+    // 📍 อย่าลืมนำ Web App URL ของคุณมาวางตรงนี้นะครับ
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxY4vdnTjB9hHFvrc28Rry6NfvLBJex22pR-Ir7psRSZFHhT-22PuSkMMH4YHQVf_4F/exec";
 
     function getBase64(file) {
