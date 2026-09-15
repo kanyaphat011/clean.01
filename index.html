@@ -7,76 +7,128 @@
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; font-family: 'Kanit', sans-serif; }
+    
     body {
       background: linear-gradient(135deg, #a8edd9 0%, #fed6e3 100%);
-      min-height: 100vh; margin: 0; padding: 20px 10px;
+      min-height: 100vh; margin: 0; padding: 20px;
       display: flex; flex-direction: column; align-items: center;
     }
+
+    /* ตกแต่งการ์ดแนวนอน (Wide layout) */
     .card {
-      background: #ffffff; width: 100%; max-width: 550px; padding: 25px 20px;
-      border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 2px solid #ffffff;
-      margin-bottom: 20px;
+      background: #ffffff; width: 100%; max-width: 950px; padding: 30px;
+      border-radius: 24px; box-shadow: 0 15px 35px rgba(255, 105, 135, 0.15);
+      border: 3px solid #ffffff; transition: transform 0.3s ease;
+      animation: float 4s ease-in-out infinite;
     }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+
     .nav-bar {
-      display: flex; gap: 8px; width: 100%; max-width: 550px; margin-bottom: 15px;
+      display: flex; gap: 12px; width: 100%; max-width: 950px; margin-bottom: 20px;
     }
+    
     .nav-btn {
-      flex: 1; padding: 12px 5px; border: none; border-radius: 12px; font-weight: 600; font-size: 14px;
-      background: #ffffff; color: #4a5568; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: all 0.2s;
+      flex: 1; padding: 12px; border: none; border-radius: 16px; font-weight: 600; font-size: 15px;
+      background: #ffffff; color: #4a5568; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: all 0.2s ease;
     }
-    .nav-btn.active { background: #38ef7d; color: #0f5132; }
+    
+    .nav-btn:hover { transform: scale(1.03); }
+    .nav-btn.active { background: #38ef7d; color: #0f5132; font-weight: 700; box-shadow: 0 4px 12px rgba(56,239,125,0.4); }
+
     .header-box {
       background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-      padding: 14px; border-radius: 14px; text-align: center; margin-bottom: 20px;
+      padding: 16px; border-radius: 18px; text-align: center; margin-bottom: 25px;
+      box-shadow: 0 6px 15px rgba(56, 249, 215, 0.4);
     }
-    .header-title { margin: 0; color: #0f5132; font-size: 19px; font-weight: 700; }
-    .form-group { margin-bottom: 16px; }
+    .header-title { margin: 0; color: #0f5132; font-size: 22px; font-weight: 700; }
+
+    /* จัดวางฟอร์มเป็นแนวนอน 2 คอลัมน์ */
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .full-width { grid-column: span 2; }
+
+    .form-group { margin-bottom: 15px; }
     label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #2d3748; }
-    input, select {
-      width: 100%; height: 46px; padding: 8px 12px; font-size: 14px;
-      border: 2px solid #cbd5e1; border-radius: 10px; outline: none; background: #f8fafc;
-    }
-    input:focus, select:focus { border-color: #38ef7d; background: #fff; }
-    .btn-main {
-      width: 100%; height: 48px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-      color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: 700;
-      cursor: pointer; box-shadow: 0 4px 12px rgba(56, 239, 125, 0.4); margin-top: 10px;
-    }
-    .btn-admin { background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); box-shadow: 0 4px 12px rgba(255, 65, 108, 0.4); }
-    .btn-teacher { background: linear-gradient(135deg, #4776e6 0%, #8e54e9 100%); box-shadow: 0 4px 12px rgba(71, 118, 230, 0.4); }
-    .hidden { display: none !important; }
     
-    /* สไตล์การ์ดรายการข้อมูล */
-    .data-card {
-      background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px;
-      padding: 15px; margin-bottom: 15px; text-align: left;
+    input, select {
+      width: 100%; height: 48px; padding: 10px 14px; font-size: 14px;
+      border: 2px solid #cbd5e1; border-radius: 12px; outline: none; background: #f8fafc;
+      transition: all 0.2s ease;
     }
-    .data-card img { width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; margin: 10px 0; }
-    .badge { display: inline-block; padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+    input:focus, select:focus {
+      border-color: #38ef7d; background: #fff; box-shadow: 0 0 0 4px rgba(56, 239, 125, 0.2);
+    }
+
+    .btn-main {
+      width: 100%; height: 50px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: #fff; border: none; border-radius: 14px; font-size: 17px; font-weight: 700;
+      cursor: pointer; box-shadow: 0 6px 15px rgba(56, 239, 125, 0.4); transition: all 0.2s ease;
+    }
+    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(56, 239, 125, 0.6); }
+
+    .hidden { display: none !important; }
+
+    /* การ์ดแสดงผล */
+    .grid-cards {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px;
+    }
+    .data-card {
+      background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease;
+    }
+    .data-card:hover { border-color: #38ef7d; transform: translateY(-3px); }
+    .data-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin: 10px 0; }
+    
+    .badge { padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
     .badge-pending { background: #fef3c7; color: #92400e; }
     .badge-success { background: #dcfce7; color: #166534; }
+
+    /* ตารางครูฝั่งแอดมิน */
+    .teacher-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    .teacher-table th, .teacher-table td { padding: 10px; border: 1px solid #cbd5e1; text-align: left; }
+    .teacher-table th { background: #edf2f7; }
   </style>
 </head>
 <body>
 
   <!-- แถบเมนูเปลี่ยนหน้า -->
   <div class="nav-bar">
-    <button class="nav-btn active" onclick="switchPage('form')">🧹 ฟอร์มตรวจ</button>
-    <button class="nav-btn" onclick="switchPage('teacher')">👨‍🏫 ระบบครู</button>
-    <button class="nav-btn" onclick="switchPage('admin')">🔑 แอดมิน</button>
+    <button class="nav-btn active" onclick="switchPage('form')">🧹 ฟอร์มตรวจความสะอาด</button>
+    <button class="nav-btn" onclick="switchPage('teacher')">👨‍🏫 ระบบครูประเมิน</button>
+    <button class="nav-btn" onclick="switchPage('admin')">🔑 ผู้ดูแลระบบ (Admin)</button>
   </div>
 
-  <!-- 1. หน้าฟอร์มส่งข้อมูล -->
+  <!-- 1. หน้าฟอร์มส่งข้อมูล (แนวนอน) -->
   <div id="page-form" class="card">
     <div class="header-box">
-      <h2 class="header-title">✨ บันทึกการตรวจความสะอาด 🧹</h2>
+      <h2 class="header-title">✨ ฟอร์มบันทึกการตรวจความสะอาด 🎀</h2>
     </div>
-    <form id="inspectionForm">
+    <form id="inspectionForm" class="form-grid">
       <div class="form-group">
         <label>👤 ชื่อผู้ส่ง (Sender):</label>
         <input type="text" id="sender" placeholder="ระบุชื่อผู้ส่ง" required>
       </div>
+
       <div class="form-group">
+        <label>🏫 ระดับชั้น (Class):</label>
+        <select id="classVal" required>
+          <option value="">-- เลือกระดับชั้น --</option>
+          <option value="ม.1">ม.1</option>
+          <option value="ม.2">ม.2</option>
+          <option value="ม.3">ม.3</option>
+          <option value="ม.4">ม.4</option>
+          <option value="ม.5">ม.5</option>
+          <option value="ม.6">ม.6</option>
+        </select>
+      </div>
+
+      <div class="form-group full-width">
         <label>📍 สถานที่/บริเวณ (Area):</label>
         <select id="area" required>
           <option value="">-- เลือกสถานที่ --</option>
@@ -92,38 +144,25 @@
           <option value="บริเวณหลวงปู่">บริเวณหลวงปู่</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>🏫 ระดับชั้น (Class):</label>
-        <select id="classVal" required>
-          <option value="">-- เลือกระดับชั้น --</option>
-          <option value="ม.1">ม.1</option>
-          <option value="ม.2">ม.2</option>
-          <option value="ม.3">ม.3</option>
-          <option value="ม.4">ม.4</option>
-          <option value="ม.5">ม.5</option>
-          <option value="ม.6">ม.6</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>🔍 ผู้ตรวจ (Checker):</label>
-        <input type="text" id="checker" placeholder="ระบุชื่อผู้ตรวจ" required>
-      </div>
-      <div class="form-group">
+
+      <div class="form-group full-width">
         <label>📸 ถ่ายภาพ / แนบรูปภาพ:</label>
         <input type="file" id="imageFile" accept="image/*" required>
       </div>
-      <button type="button" class="btn-main" id="submitBtn" onclick="sendData()">🚀 ส่งข้อมูลตรวจความสะอาด</button>
+
+      <div class="full-width">
+        <button type="button" class="btn-main" id="submitBtn" onclick="sendData()">🚀 ส่งข้อมูลตรวจความสะอาด</button>
+      </div>
     </form>
   </div>
 
   <!-- 2. หน้าระบบครู -->
   <div id="page-teacher" class="card hidden">
     <div class="header-box" style="background: linear-gradient(135deg, #4776e6 0%, #8e54e9 100%);">
-      <h2 class="header-title" style="color: #fff;">👨‍🏫 ระบบครูตรวจประเมิน</h2>
+      <h2 class="header-title" style="color: #fff;">👨‍🏫 ระบบครูตรวจประเมินคะแนน 🎈</h2>
     </div>
     
-    <!-- ล็อกอิน/สมัครสมาชิกครู -->
-    <div id="teacher-auth">
+    <div id="teacher-auth" style="max-width: 400px; margin: 0 auto;">
       <div class="form-group">
         <label>ชื่อผู้ใช้งานครู:</label>
         <input type="text" id="teacher-user" placeholder="ระบุชื่อเข้าใช้งาน">
@@ -132,51 +171,65 @@
         <label>รหัสผ่าน:</label>
         <input type="password" id="teacher-pass" placeholder="ระบุรหัสผ่าน">
       </div>
-      <button type="button" class="btn-main btn-teacher" onclick="loginTeacher()">เข้าสู่ระบบครู</button>
-      <p style="text-align: center; margin-top: 12px; font-size: 13px; color: #4a5568;">
-        ยังไม่มีบัญชี? <a href="#" onclick="registerTeacher()" style="color: #4776e6; font-weight: 600;">สมัครสมาชิกครูที่นี่</a>
+      <button type="button" class="btn-main" style="background: linear-gradient(135deg, #4776e6 0%, #8e54e9 100%);" onclick="loginTeacher()">เข้าสู่ระบบครู</button>
+      <p style="text-align: center; margin-top: 12px; font-size: 13px;">
+        ยังไม่มีบัญชี? <a href="#" onclick="registerTeacher()" style="color: #4776e6; font-weight: 600;">สมัครสมาชิกครู</a>
       </p>
     </div>
 
-    <!-- แผงประเมินคะแนนของครู -->
     <div id="teacher-panel" class="hidden">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
         <span id="teacher-welcome" style="font-weight:600; color:#2d3748;"></span>
-        <button onclick="logout('teacher')" style="padding:4px 10px; font-size:12px; background:#e2e8f0; border:none; border-radius:6px; cursor:pointer;">ออกจากระบบ</button>
+        <button onclick="logout('teacher')" style="padding:6px 12px; font-size:12px; background:#e2e8f0; border:none; border-radius:8px; cursor:pointer;">ออกจากระบบ</button>
       </div>
-      <button onclick="loadSheetData('teacher')" style="width:100%; padding:8px; margin-bottom:15px; background:#edf2f7; border:none; border-radius:8px; font-weight:600; cursor:pointer;">🔄 รีเฟรชรายการข้อมูล</button>
-      <div id="teacher-list">กดรีเฟรชเพื่อโหลดข้อมูล...</div>
+      <button onclick="loadSheetData('teacher')" style="width:100%; padding:10px; margin-bottom:20px; background:#edf2f7; border:none; border-radius:10px; font-weight:600; cursor:pointer;">🔄 รีเฟรชรายการข้อมูล</button>
+      <div id="teacher-list" class="grid-cards">กดรีเฟรชเพื่อโหลดข้อมูล...</div>
     </div>
   </div>
 
-  <!-- 3. หน้าระบบแอดมิน (รหัส 8888) -->
+  <!-- 3. หน้าระบบแอดมิน -->
   <div id="page-admin" class="card hidden">
     <div class="header-box" style="background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);">
-      <h2 class="header-title" style="color: #fff;">🔑 ระบบแอดมิน (Admin)</h2>
+      <h2 class="header-title" style="color: #fff;">🔑 ระบบผู้ดูแลระบบ (Admin) 👑</h2>
     </div>
 
-    <!-- ล็อกอินแอดมิน -->
-    <div id="admin-auth">
+    <!-- ล็อกอินแอดมิน (ซ่อนรหัส 8888) -->
+    <div id="admin-auth" style="max-width: 400px; margin: 0 auto;">
       <div class="form-group">
-        <label>กรอกรหัสผ่านแอดมิน:</label>
-        <input type="password" id="admin-pass" placeholder="กรอกรหัส 8888">
+        <label>กรอกรหัสผ่านเข้าสู่ระบบ:</label>
+        <input type="password" id="admin-pass" placeholder="กรอกรหัสผ่าน">
       </div>
-      <button type="button" class="btn-main btn-admin" onclick="loginAdmin()">เข้าสู่ระบบแอดมิน</button>
+      <button type="button" class="btn-main" style="background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);" onclick="loginAdmin()">เข้าสู่ระบบแอดมิน</button>
     </div>
 
-    <!-- แผงควบคุมแอดมิน -->
     <div id="admin-panel" class="hidden">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-        <span style="font-weight:600; color:#e53e3e;">🔴 โหมดผู้ดูแลระบบ (Admin)</span>
-        <button onclick="logout('admin')" style="padding:4px 10px; font-size:12px; background:#e2e8f0; border:none; border-radius:6px; cursor:pointer;">ออกจากระบบ</button>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <span style="font-weight:700; color:#e53e3e;">🔴 แผงควบคุมระบบแอดมิน</span>
+        <button onclick="logout('admin')" style="padding:6px 12px; font-size:12px; background:#e2e8f0; border:none; border-radius:8px; cursor:pointer;">ออกจากระบบ</button>
       </div>
-      <button onclick="loadSheetData('admin')" style="width:100%; padding:8px; margin-bottom:15px; background:#edf2f7; border:none; border-radius:8px; font-weight:600; cursor:pointer;">🔄 ดึงข้อมูลทั้งหมดจากระบบ</button>
-      <div id="admin-list">กดปุ่มด้านบนเพื่อโหลดข้อมูล...</div>
+
+      <!-- ส่วนจัดการครู (เพิ่ม/ลบ) -->
+      <div style="background:#f7fafc; padding:20px; border-radius:16px; border:1px solid #cbd5e1; margin-bottom:25px;">
+        <h3 style="margin-top:0; color:#2d3748;">👩‍🏫 จัดการรายชื่อครู (เพิ่ม / ลบ บัญชีครู)</h3>
+        <div style="display:flex; gap:10px; margin-bottom:15px;">
+          <input type="text" id="new-teacher-user" placeholder="ชื่อผู้ใช้งานครู">
+          <input type="password" id="new-teacher-pass" placeholder="รหัสผ่าน">
+          <button onclick="adminAddTeacher()" style="padding:0 20px; background:#38ef7d; color:#0f5132; border:none; border-radius:10px; font-weight:700; cursor:pointer; white-space:nowrap;">+ เพิ่มครู</button>
+        </div>
+        <table class="teacher-table">
+          <thead>
+            <tr><th>ชื่อผู้ใช้ครู</th><th>จัดการ</th></tr>
+          </thead>
+          <tbody id="admin-teacher-list"></tbody>
+        </table>
+      </div>
+
+      <button onclick="loadSheetData('admin')" style="width:100%; padding:10px; margin-bottom:20px; background:#edf2f7; border:none; border-radius:10px; font-weight:600; cursor:pointer;">🔄 โหลดข้อมูลรายการตรวจทั้งหมด</button>
+      <div id="admin-list" class="grid-cards">กดปุ่มด้านบนเพื่อดึงข้อมูลรายการ...</div>
     </div>
   </div>
 
   <script>
-    // 📍 URL Google Apps Script ของคุณ
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxY4vdnTjB9hHFvrc28Rry6NfvLBJex22pR-Ir7psRSZFHhT-22PuSkMMH4YHQVf_4F/exec";
 
     function switchPage(page) {
@@ -199,17 +252,15 @@
       });
     }
 
-    // 1. ระบบส่งข้อมูล
     async function sendData() {
       const btn = document.getElementById("submitBtn");
       const sender = document.getElementById("sender").value.trim();
       const area = document.getElementById("area").value;
       const classVal = document.getElementById("classVal").value;
-      const checker = document.getElementById("checker").value.trim();
       const fileInput = document.getElementById("imageFile");
 
-      if (!sender || !area || !classVal || !checker || fileInput.files.length === 0) {
-        alert("กรุณากรอกข้อมูลให้ครบทุกช่อง และแนบรูปภาพครับ");
+      if (!sender || !area || !classVal || fileInput.files.length === 0) {
+        alert("กรุณากรอกข้อมูลให้ครบทุกช่อง และแนบรูปภาพด้วยครับ");
         return;
       }
 
@@ -223,7 +274,6 @@
           sender: sender,
           area: area,
           class: classVal,
-          checker: checker,
           status: "รอครูตรวจ",
           score: "-",
           image: imageBase64
@@ -246,7 +296,7 @@
       }
     }
 
-    // 2. ระบบครู
+    // ระบบครู
     function registerTeacher() {
       const user = prompt("ตั้งชื่อผู้ใช้งานครู:");
       if (!user) return;
@@ -254,7 +304,7 @@
       if (!pass) return;
 
       localStorage.setItem("teacher_" + user, pass);
-      alert("🎉 สมัครสมาชิกสำเร็จ! สามารถนำชื่อผู้ใช้และรหัสผ่านไปเข้าสู่ระบบได้เลยครับ");
+      alert("🎉 สมัครสมาชิกครูเรียบร้อยแล้ว!");
     }
 
     function loginTeacher() {
@@ -268,19 +318,20 @@
         document.getElementById("teacher-welcome").innerText = "👨‍🏫 สวัสดีคุณครู " + u;
         loadSheetData('teacher');
       } else {
-        alert("ชื่อผู้ใช้งานหรือรหัสผ่านครูไม่ถูกต้อง!");
+        alert("ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง!");
       }
     }
 
-    // 3. ระบบแอดมิน (รหัส 8888)
+    // ระบบแอดมิน
     function loginAdmin() {
       const pass = document.getElementById("admin-pass").value.trim();
       if (pass === "8888") {
         document.getElementById("admin-auth").classList.add("hidden");
         document.getElementById("admin-panel").classList.remove("hidden");
+        renderAdminTeacherList();
         loadSheetData('admin');
       } else {
-        alert("รหัสผ่านแอดมินไม่ถูกต้อง! (รหัสคือ 8888)");
+        alert("รหัสผ่านไม่ถูกต้อง!");
       }
     }
 
@@ -294,10 +345,47 @@
       }
     }
 
-    // 4. ดึงข้อมูลจาก Google Sheets มาแสดงผล
+    // แอดมินเพิ่ม-ลบครู
+    function adminAddTeacher() {
+      const u = document.getElementById("new-teacher-user").value.trim();
+      const p = document.getElementById("new-teacher-pass").value.trim();
+      if(!u || !p) { alert("กรุณากรอกชื่อผู้ใช้และรหัสผ่านครูให้ครบครับ"); return; }
+
+      localStorage.setItem("teacher_" + u, p);
+      document.getElementById("new-teacher-user").value = "";
+      document.getElementById("new-teacher-pass").value = "";
+      alert("เพิ่มบัญชีครูเรียบร้อยแล้ว!");
+      renderAdminTeacherList();
+    }
+
+    function adminDeleteTeacher(username) {
+      if(confirm(`ต้องการลบบัญชีครู "${username}" หรือไม่?`)) {
+        localStorage.removeItem("teacher_" + username);
+        renderAdminTeacherList();
+      }
+    }
+
+    function renderAdminTeacherList() {
+      const tbody = document.getElementById("admin-teacher-list");
+      tbody.innerHTML = "";
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith("teacher_")) {
+          const username = key.replace("teacher_", "");
+          tbody.innerHTML += `
+            <tr>
+              <td>${username}</td>
+              <td><button onclick="adminDeleteTeacher('${username}')" style="background:#e53e3e; color:#fff; border:none; padding:4px 10px; border-radius:6px; cursor:pointer;">ลบ</button></td>
+            </tr>
+          `;
+        }
+      }
+    }
+
+    // ดึงข้อมูลรายการ
     async function loadSheetData(role) {
       const container = document.getElementById(role + "-list");
-      container.innerHTML = "⏳ กำลังโหลดข้อมูลจาก Google Sheets...";
+      container.innerHTML = "⏳ กำลังดึงข้อมูล...";
 
       try {
         const res = await fetch(SCRIPT_URL);
@@ -305,14 +393,12 @@
         
         if (json.status === "success" && json.data.length > 1) {
           let html = "";
-          // ข้าม Header row (i = 1)
           for (let i = 1; i < json.data.length; i++) {
             const row = json.data[i];
             const date = row[1] || "-";
             const sender = row[2] || "-";
             const area = row[3] || "-";
             const classVal = row[4] || "-";
-            const checker = row[5] || "-";
             const status = row[6] || "รอครูตรวจ";
             const imgUrl = row[7] || "";
             const score = row[8] || "-";
@@ -324,47 +410,34 @@
                   <span class="badge ${score !== '-' ? 'badge-success' : 'badge-pending'}">${status}</span>
                 </div>
                 <div style="font-size:13px; color:#4a5568; margin-top:6px;">
-                  <div><b>ผู้ส่ง:</b> ${sender} | <b>ผู้ตรวจ:</b> ${checker}</div>
+                  <div><b>ผู้ส่ง:</b> ${sender}</div>
                   <div><b>วันที่:</b> ${date}</div>
-                  <div style="color:#2b6cb0; font-weight:600; margin-top:4px;">คะแนนประเมิน: ${score}</div>
+                  <div style="color:#2b6cb0; font-weight:600; margin-top:4px;">คะแนน: ${score}</div>
                 </div>
                 ${imgUrl ? `<a href="${imgUrl}" target="_blank"><img src="${imgUrl}" alt="รูปตรวจ"></a>` : ''}
                 
                 ${role === 'teacher' ? `
                   <div style="margin-top:8px; display:flex; gap:5px;">
-                    <input type="number" id="score-input-${i}" placeholder="ให้คะแนน (0-10)" min="0" max="10" style="height:36px;">
-                    <button onclick="saveScore(${i})" style="padding:0 15px; background:#4776e6; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:600;">บันทึก</button>
-                  </div>
-                ` : ''}
-
-                ${role === 'admin' ? `
-                  <div style="margin-top:8px; display:flex; gap:5px;">
-                    <button onclick="adminEdit(${i})" style="padding:6px 12px; background:#e53e3e; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:12px;">✏️ แก้ไขข้อมูล (Admin)</button>
+                    <input type="number" id="score-input-${i}" placeholder="คะแนน (0-10)" min="0" max="10" style="height:36px;">
+                    <button onclick="saveScore(${i})" style="padding:0 12px; background:#4776e6; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:12px;">บันทึก</button>
                   </div>
                 ` : ''}
               </div>
             `;
           }
-          container.innerHTML = html || "ยังไม่มีข้อมูลบันทึกเข้ามาครับ";
+          container.innerHTML = html || "ยังไม่มีข้อมูลเข้ามาครับ";
         } else {
-          container.innerHTML = "ยังไม่มีข้อมูลในตาราง Google Sheets";
+          container.innerHTML = "ยังไม่มีข้อมูลในระบบ";
         }
       } catch (err) {
-        container.innerHTML = "❌ ไม่สามารถโหลดข้อมูลได้ หรือยังไม่ได้ Deploy Web App เป็นเวอร์ชันใหม่";
+        container.innerHTML = "❌ ไม่สามารถโหลดข้อมูลได้";
       }
     }
 
     function saveScore(rowIndex) {
       const score = document.getElementById(`score-input-${rowIndex}`).value;
       if (!score) { alert("กรุณากรอกคะแนนก่อนครับ"); return; }
-      alert(`🎉 บันทึกคะแนน ${score} คะแนน ให้รายการลำดับที่ ${rowIndex} เรียบร้อยแล้ว`);
-    }
-
-    function adminEdit(rowIndex) {
-      const newScore = prompt(`[Admin Mode] แก้ไขคะแนนสำหรับรายการที่ ${rowIndex}:`);
-      if (newScore !== null) {
-        alert(`แก้ไขข้อมูลเรียบร้อยแล้ว`);
-      }
+      alert(`🎉 บันทึกคะแนน ${score} คะแนน เรียบร้อยแล้ว`);
     }
   </script>
 </body>
